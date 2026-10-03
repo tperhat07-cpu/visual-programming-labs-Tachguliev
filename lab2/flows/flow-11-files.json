@@ -1,0 +1,133 @@
+[
+    {
+        "id": "adffa2ae415b1383",
+        "type": "inject",
+        "z": "882724fcf6f40ec6",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 100,
+        "y": 1600,
+        "wires": [
+            [
+                "27f2963056f811f8"
+            ]
+        ]
+    },
+    {
+        "id": "27f2963056f811f8",
+        "type": "function",
+        "z": "882724fcf6f40ec6",
+        "name": "function 6",
+        "func": "msg.payload = \"Студент Тачгулиев записал данные в: \" + new Date().toLocaleTimeString() + \"\\n\";\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 300,
+        "y": 1600,
+        "wires": [
+            [
+                "e9f15abbed933ee4"
+            ]
+        ]
+    },
+    {
+        "id": "e9f15abbed933ee4",
+        "type": "file",
+        "z": "882724fcf6f40ec6",
+        "name": "",
+        "filename": "/data/lab2_test.txt",
+        "filenameType": "str",
+        "appendNewline": true,
+        "createDir": false,
+        "overwriteFile": "false",
+        "encoding": "none",
+        "x": 510,
+        "y": 1600,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "c5498f6261163570",
+        "type": "file in",
+        "z": "882724fcf6f40ec6",
+        "name": "",
+        "filename": "/data/lab2_test.txt",
+        "filenameType": "str",
+        "format": "utf8",
+        "chunk": false,
+        "sendError": false,
+        "encoding": "none",
+        "allProps": false,
+        "x": 330,
+        "y": 1680,
+        "wires": [
+            [
+                "700dab8134912086"
+            ]
+        ]
+    },
+    {
+        "id": "1b52e81cb92a7e4c",
+        "type": "inject",
+        "z": "882724fcf6f40ec6",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 100,
+        "y": 1680,
+        "wires": [
+            [
+                "c5498f6261163570"
+            ]
+        ]
+    },
+    {
+        "id": "700dab8134912086",
+        "type": "debug",
+        "z": "882724fcf6f40ec6",
+        "name": "debug 9",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 540,
+        "y": 1680,
+        "wires": []
+    }
+]
