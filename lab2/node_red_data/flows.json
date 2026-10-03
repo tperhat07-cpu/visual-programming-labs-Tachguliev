@@ -8,6 +8,37 @@
         "env": []
     },
     {
+        "id": "73b3a26a26d1779c",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "broker.hivemq.com",
+        "port": 1883,
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": 4,
+        "keepalive": 60,
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
         "id": "f5dc8438be7bb918",
         "type": "inject",
         "z": "882724fcf6f40ec6",
@@ -481,6 +512,235 @@
         "statusType": "auto",
         "x": 460,
         "y": 920,
+        "wires": []
+    },
+    {
+        "id": "32bae7b88df8d723",
+        "type": "inject",
+        "z": "882724fcf6f40ec6",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "Привет из облака!",
+        "payloadType": "str",
+        "x": 110,
+        "y": 1000,
+        "wires": [
+            [
+                "f75e51f1018198ca"
+            ]
+        ]
+    },
+    {
+        "id": "f75e51f1018198ca",
+        "type": "mqtt out",
+        "z": "882724fcf6f40ec6",
+        "name": "",
+        "topic": "student/Tachguliev/lab2/test",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "73b3a26a26d1779c",
+        "x": 360,
+        "y": 1000,
+        "wires": []
+    },
+    {
+        "id": "dffc311ec6461d99",
+        "type": "mqtt in",
+        "z": "882724fcf6f40ec6",
+        "name": "",
+        "topic": "student/Tachguliev/lab2/test",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "73b3a26a26d1779c",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 660,
+        "y": 1000,
+        "wires": [
+            [
+                "11a869454968ab39"
+            ]
+        ]
+    },
+    {
+        "id": "11a869454968ab39",
+        "type": "debug",
+        "z": "882724fcf6f40ec6",
+        "name": "debug 8",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 900,
+        "y": 1000,
+        "wires": []
+    },
+    {
+        "id": "5765820ee6d21ca8",
+        "type": "http in",
+        "z": "882724fcf6f40ec6",
+        "name": "",
+        "url": "/api/text",
+        "method": "get",
+        "upload": false,
+        "skipBodyParsing": false,
+        "swaggerDoc": "",
+        "x": 110,
+        "y": 1100,
+        "wires": [
+            [
+                "1ab1d1de42654d40"
+            ]
+        ]
+    },
+    {
+        "id": "1ab1d1de42654d40",
+        "type": "template",
+        "z": "882724fcf6f40ec6",
+        "name": "",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "Привет, это текстовый ответ от Tachguliev!. Нажми Готово.",
+        "output": "str",
+        "x": 260,
+        "y": 1100,
+        "wires": [
+            [
+                "667ca171c9375f76"
+            ]
+        ]
+    },
+    {
+        "id": "667ca171c9375f76",
+        "type": "http response",
+        "z": "882724fcf6f40ec6",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 410,
+        "y": 1100,
+        "wires": []
+    },
+    {
+        "id": "54a5169a058e0f2f",
+        "type": "http in",
+        "z": "882724fcf6f40ec6",
+        "name": "",
+        "url": "/api/info",
+        "method": "get",
+        "upload": false,
+        "skipBodyParsing": false,
+        "swaggerDoc": "",
+        "x": 130,
+        "y": 1160,
+        "wires": [
+            [
+                "e0bd61352229f446"
+            ]
+        ]
+    },
+    {
+        "id": "e0bd61352229f446",
+        "type": "template",
+        "z": "882724fcf6f40ec6",
+        "name": "",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "json",
+        "syntax": "mustache",
+        "template": "{\n    \"student\": \"Tachguliev\",\n    \"status\": \"online\"\n}",
+        "output": "str",
+        "x": 320,
+        "y": 1160,
+        "wires": [
+            [
+                "db3e8c56472d952a"
+            ]
+        ]
+    },
+    {
+        "id": "db3e8c56472d952a",
+        "type": "http response",
+        "z": "882724fcf6f40ec6",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 490,
+        "y": 1160,
+        "wires": []
+    },
+    {
+        "id": "45dcf4d712beb796",
+        "type": "http in",
+        "z": "882724fcf6f40ec6",
+        "name": "",
+        "url": "/api/items",
+        "method": "get",
+        "upload": false,
+        "skipBodyParsing": false,
+        "swaggerDoc": "",
+        "x": 140,
+        "y": 1220,
+        "wires": [
+            [
+                "d7369e147ca61838"
+            ]
+        ]
+    },
+    {
+        "id": "d7369e147ca61838",
+        "type": "function",
+        "z": "882724fcf6f40ec6",
+        "name": "function 3",
+        "func": "if (msg.req.query.id === \"1\") {\n    msg.statusCode = 200;\n    msg.payload = { id: 1, name: \"Ноутбук\", owner: \"Tachguliev\" };\n} else {\n    msg.statusCode = 404;\n    msg.payload = { error: \"Товар не найден (404 Not Found)\" };\n}\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 320,
+        "y": 1220,
+        "wires": [
+            [
+                "cb05f12f82086baa"
+            ]
+        ]
+    },
+    {
+        "id": "cb05f12f82086baa",
+        "type": "http response",
+        "z": "882724fcf6f40ec6",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 510,
+        "y": 1220,
         "wires": []
     }
 ]
