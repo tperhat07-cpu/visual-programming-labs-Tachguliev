@@ -39,6 +39,148 @@
         "sessionExpiry": ""
     },
     {
+        "id": "70916885d0aefc24",
+        "type": "ui_tab",
+        "name": "Лабораторная 2 Tachguliev",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "68cecf80cdcbf3fc",
+        "type": "ui_base",
+        "theme": {
+            "name": "theme-light",
+            "lightTheme": {
+                "default": "#0094CE",
+                "baseColor": "#0094CE",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": false
+            },
+            "darkTheme": {
+                "default": "#097479",
+                "baseColor": "#097479",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": false
+            },
+            "customTheme": {
+                "name": "Untitled Theme 1",
+                "default": "#4B7930",
+                "baseColor": "#4B7930",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+            },
+            "themeState": {
+                "base-color": {
+                    "default": "#0094CE",
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-titlebar-backgroundColor": {
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-backgroundColor": {
+                    "value": "#fafafa",
+                    "edited": false
+                },
+                "page-sidebar-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-textColor": {
+                    "value": "#1bbfff",
+                    "edited": false
+                },
+                "group-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "widget-textColor": {
+                    "value": "#111111",
+                    "edited": false
+                },
+                "widget-backgroundColor": {
+                    "value": "#0094ce",
+                    "edited": false
+                },
+                "widget-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "base-font": {
+                    "value": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+                }
+            },
+            "angularTheme": {
+                "primary": "indigo",
+                "accents": "blue",
+                "warn": "red",
+                "background": "grey",
+                "palette": "light"
+            }
+        },
+        "site": {
+            "name": "Node-RED Dashboard",
+            "hideToolbar": "false",
+            "allowSwipe": "false",
+            "lockMenu": "false",
+            "allowTempTheme": "true",
+            "dateFormat": "DD/MM/YYYY",
+            "sizes": {
+                "sx": 48,
+                "sy": 48,
+                "gx": 6,
+                "gy": 6,
+                "cx": 6,
+                "cy": 6,
+                "px": 0,
+                "py": 0
+            }
+        }
+    },
+    {
+        "id": "5057cc91978978c6",
+        "type": "ui_group",
+        "name": " Показатели датчика",
+        "tab": "70916885d0aefc24",
+        "order": 1,
+        "disp": true,
+        "width": 6,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "0a770390125660f5",
+        "type": "telegram bot",
+        "botname": "tvl_lab2_Tachguliev_bot",
+        "usernames": "",
+        "chatids": "",
+        "baseapiurl": "",
+        "testenvironment": false,
+        "updatemode": "polling",
+        "pollinterval": 300,
+        "usesocks": false,
+        "sockshost": "",
+        "socksprotocol": "socks5",
+        "socksport": 6667,
+        "socksusername": "anonymous",
+        "sockspassword": "",
+        "bothost": "",
+        "botpath": "",
+        "localbothost": "0.0.0.0",
+        "localbotport": 8443,
+        "publicbotport": 8443,
+        "privatekey": "",
+        "certificate": "",
+        "useselfsignedcertificate": false,
+        "sslterminated": false,
+        "verboselogging": false
+    },
+    {
         "id": "f5dc8438be7bb918",
         "type": "inject",
         "z": "882724fcf6f40ec6",
@@ -608,7 +750,7 @@
         "upload": false,
         "skipBodyParsing": false,
         "swaggerDoc": "",
-        "x": 110,
+        "x": 130,
         "y": 1100,
         "wires": [
             [
@@ -627,7 +769,7 @@
         "syntax": "mustache",
         "template": "Привет, это текстовый ответ от Tachguliev!. Нажми Готово.",
         "output": "str",
-        "x": 260,
+        "x": 320,
         "y": 1100,
         "wires": [
             [
@@ -642,7 +784,7 @@
         "name": "",
         "statusCode": "",
         "headers": {},
-        "x": 410,
+        "x": 510,
         "y": 1100,
         "wires": []
     },
@@ -690,7 +832,7 @@
         "name": "",
         "statusCode": "",
         "headers": {},
-        "x": 490,
+        "x": 510,
         "y": 1160,
         "wires": []
     },
@@ -741,6 +883,379 @@
         "headers": {},
         "x": 510,
         "y": 1220,
+        "wires": []
+    },
+    {
+        "id": "97ab510b1e5bd61b",
+        "type": "inject",
+        "z": "882724fcf6f40ec6",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 120,
+        "y": 1340,
+        "wires": [
+            [
+                "13825894c98e588d"
+            ]
+        ]
+    },
+    {
+        "id": "13825894c98e588d",
+        "type": "function",
+        "z": "882724fcf6f40ec6",
+        "name": "function 4",
+        "func": "msg.payload = Math.floor(Math.random() * (30 - 18 + 1)) + 18;\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 320,
+        "y": 1340,
+        "wires": [
+            [
+                "30ccace9182d1fde",
+                "35ba5efc9026ab28"
+            ]
+        ]
+    },
+    {
+        "id": "35ba5efc9026ab28",
+        "type": "ui_gauge",
+        "z": "882724fcf6f40ec6",
+        "name": "",
+        "group": "5057cc91978978c6",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Температура (°C)",
+        "label": "units",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "40",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "diff": false,
+        "className": "",
+        "x": 530,
+        "y": 1300,
+        "wires": []
+    },
+    {
+        "id": "30ccace9182d1fde",
+        "type": "ui_chart",
+        "z": "882724fcf6f40ec6",
+        "name": "",
+        "group": "5057cc91978978c6",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "label": "История температуры",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 550,
+        "y": 1380,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "e5b55d1272c0116c",
+        "type": "telegram receiver",
+        "z": "882724fcf6f40ec6",
+        "name": "",
+        "bot": "0a770390125660f5",
+        "saveDataDir": "",
+        "filterCommands": false,
+        "hasinput": false,
+        "inputs": 0,
+        "handleallupdates": false,
+        "handleprocessupdates": false,
+        "x": 90,
+        "y": 1460,
+        "wires": [
+            [
+                "29e5cd3af5a0600d"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "29e5cd3af5a0600d",
+        "type": "function",
+        "z": "882724fcf6f40ec6",
+        "name": "function 5",
+        "func": "const chatId = msg.payload.chatId;\nconst text = msg.payload.content;\n\nlet reply = \"\";\n\nif (text === \"/start\") {\n    reply = \"Привет! Я бот студента Тачгулиева для лабы №2.\";\n} else if (text === \"/help\") {\n    reply = \"Я знаю команды: /start, /help. А если напишешь что-то другое — я повторю это эхом!\";\n} else {\n    reply = \"Эхо от Тачгулиева: \" + text;\n}\n\nmsg.payload = {\n    chatId: chatId,\n    type: \"message\",\n    content: reply\n};\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 300,
+        "y": 1460,
+        "wires": [
+            [
+                "349b013b2c4e7617"
+            ]
+        ]
+    },
+    {
+        "id": "349b013b2c4e7617",
+        "type": "telegram sender",
+        "z": "882724fcf6f40ec6",
+        "name": "",
+        "bot": "0a770390125660f5",
+        "haserroroutput": false,
+        "outputs": 1,
+        "x": 550,
+        "y": 1460,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "adffa2ae415b1383",
+        "type": "inject",
+        "z": "882724fcf6f40ec6",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 100,
+        "y": 1600,
+        "wires": [
+            [
+                "27f2963056f811f8"
+            ]
+        ]
+    },
+    {
+        "id": "27f2963056f811f8",
+        "type": "function",
+        "z": "882724fcf6f40ec6",
+        "name": "function 6",
+        "func": "msg.payload = \"Студент Тачгулиев записал данные в: \" + new Date().toLocaleTimeString() + \"\\n\";\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 300,
+        "y": 1600,
+        "wires": [
+            [
+                "e9f15abbed933ee4"
+            ]
+        ]
+    },
+    {
+        "id": "e9f15abbed933ee4",
+        "type": "file",
+        "z": "882724fcf6f40ec6",
+        "name": "",
+        "filename": "/data/lab2_test.txt",
+        "filenameType": "str",
+        "appendNewline": true,
+        "createDir": false,
+        "overwriteFile": "false",
+        "encoding": "none",
+        "x": 510,
+        "y": 1600,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "c5498f6261163570",
+        "type": "file in",
+        "z": "882724fcf6f40ec6",
+        "name": "",
+        "filename": "/data/lab2_test.txt",
+        "filenameType": "str",
+        "format": "utf8",
+        "chunk": false,
+        "sendError": false,
+        "encoding": "none",
+        "allProps": false,
+        "x": 330,
+        "y": 1680,
+        "wires": [
+            [
+                "700dab8134912086"
+            ]
+        ]
+    },
+    {
+        "id": "1b52e81cb92a7e4c",
+        "type": "inject",
+        "z": "882724fcf6f40ec6",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 100,
+        "y": 1680,
+        "wires": [
+            [
+                "c5498f6261163570"
+            ]
+        ]
+    },
+    {
+        "id": "700dab8134912086",
+        "type": "debug",
+        "z": "882724fcf6f40ec6",
+        "name": "debug 9",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 540,
+        "y": 1680,
+        "wires": []
+    },
+    {
+        "id": "75de76a75f041764",
+        "type": "inject",
+        "z": "882724fcf6f40ec6",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 80,
+        "y": 1740,
+        "wires": [
+            [
+                "78a367a0f7030bd1"
+            ]
+        ]
+    },
+    {
+        "id": "78a367a0f7030bd1",
+        "type": "function",
+        "z": "882724fcf6f40ec6",
+        "name": "function 7",
+        "func": "// Достаем из долговременной памяти (контекста) наш счетчик\nlet count = flow.get(\"clickCounter\") || 0;\n\n// Увеличиваем на единицу при каждом нажатии\ncount += 1;\n\n// Сохраняем обновленное число обратно в память\nflow.set(\"clickCounter\", count);\n\nmsg.payload = {\n    student: \"Tachguliev\",\n    click_count: count,\n    info: \"Значение хранится в flow context\"\n};\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 300,
+        "y": 1740,
+        "wires": [
+            [
+                "eb48221bc3ba6ec9"
+            ]
+        ]
+    },
+    {
+        "id": "eb48221bc3ba6ec9",
+        "type": "debug",
+        "z": "882724fcf6f40ec6",
+        "name": "debug 10",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 480,
+        "y": 1740,
         "wires": []
     }
 ]
