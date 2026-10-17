@@ -12,7 +12,7 @@
 Добавь несколько интерактивных элементов (реализующих CRUD)
 
 ## 3. Ссылка на dev-версию приложения
-https://my-bubble-app.bubbleapps.io/version-test/
+[https://my-bubble-app.bubbleapps.io/version-test/](https://my-app-261010-14171.bubbleapps.io/version-test?debug_mode=true)
 
 ## 4. Использованные AI-промпты
 * Основной промпт для генерации приложения (указан выше).
