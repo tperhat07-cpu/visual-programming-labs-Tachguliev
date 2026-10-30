@@ -1,0 +1,551 @@
+{
+  "version": "6",
+  "id": "cl-tachguliev-lab5-flow",
+  "name": "Интеллектуальный помощник поддержки и лидогенерации (Тачгулиев Перхат, ИИ-241)",
+  "events": [
+    {
+      "id": "evt-start-tachguliev",
+      "type": "start",
+      "graphCoordinates": { "x": 0, "y": 200 },
+      "outgoingEdgeId": "edge-start-to-welcome"
+    }
+  ],
+  "groups": [
+    {
+      "id": "grp-welcome",
+      "title": "1. Приветствие и авторство",
+      "graphCoordinates": { "x": 220, "y": 200 },
+      "blocks": [
+        {
+          "id": "blk-welcome-txt-1",
+          "type": "text",
+          "content": {
+            "richText": [
+              {
+                "type": "p",
+                "children": [
+                  { "text": "Здравствуйте! Вас приветствует автоматизированный помощник службы сервиса." }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "blk-welcome-txt-2",
+          "type": "text",
+          "content": {
+            "richText": [
+              {
+                "type": "p",
+                "children": [
+                  { "text": "Проект подготовлен студентом группы " },
+                  { "text": "ИИ-241", "bold": true },
+                  { "text": " " },
+                  { "text": "Тачгулиевым Перхатом", "bold": true },
+                  { "text": " (Лабораторная работа №5: Чат-боты, Трек C TypeBot)." }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "blk-welcome-txt-3",
+          "type": "text",
+          "content": {
+            "richText": [
+              {
+                "type": "p",
+                "children": [
+                  { "text": "Давайте познакомимся. Как к вам обращаться?" }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "blk-ask-name",
+          "type": "text input",
+          "options": {
+            "labels": {
+              "placeholder": "Введите ваше полное имя..."
+            },
+            "variableId": "var-user-name"
+          },
+          "outgoingEdgeId": "edge-welcome-to-email"
+        }
+      ]
+    },
+    {
+      "id": "grp-email",
+      "title": "2. Контактная почта",
+      "graphCoordinates": { "x": 600, "y": 200 },
+      "blocks": [
+        {
+          "id": "blk-greet-user",
+          "type": "text",
+          "content": {
+            "richText": [
+              {
+                "type": "p",
+                "children": [
+                  { "text": "Рад знакомству, " },
+                  { "text": "{{userName}}", "bold": true },
+                  { "text": "! Укажите ваш контактный e-mail:" }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "blk-ask-email",
+          "type": "email input",
+          "options": {
+            "labels": {
+              "placeholder": "student@university.edu или name@company.com"
+            },
+            "variableId": "var-user-email"
+          },
+          "outgoingEdgeId": "edge-email-to-group"
+        }
+      ]
+    },
+    {
+      "id": "grp-group-input",
+      "title": "3. Академическая группа / Подразделение",
+      "graphCoordinates": { "x": 980, "y": 200 },
+      "blocks": [
+        {
+          "id": "blk-ask-group-txt",
+          "type": "text",
+          "content": {
+            "richText": [
+              {
+                "type": "p",
+                "children": [
+                  { "text": "Укажите вашу учебную группу, факультет или подразделение:" }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "blk-ask-group",
+          "type": "text input",
+          "options": {
+            "labels": {
+              "placeholder": "Например: ИИ-241 или Департамент разработки"
+            },
+            "variableId": "var-student-group"
+          },
+          "outgoingEdgeId": "edge-group-to-service"
+        }
+      ]
+    },
+    {
+      "id": "grp-service-choice",
+      "title": "4. Категория обращения",
+      "graphCoordinates": { "x": 1360, "y": 200 },
+      "blocks": [
+        {
+          "id": "blk-ask-topic",
+          "type": "text",
+          "content": {
+            "richText": [
+              {
+                "type": "p",
+                "children": [
+                  { "text": "Выберите направление вашего запроса:" }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "blk-choice-topic",
+          "type": "choice input",
+          "options": {
+            "isMultipleChoice": false,
+            "variableId": "var-selected-service"
+          },
+          "items": [
+            {
+              "id": "item-choice-tech",
+              "content": "🛠 Техническая поддержка и баг-репорты",
+              "outgoingEdgeId": "edge-choice-to-rating"
+            },
+            {
+              "id": "item-choice-consult",
+              "content": "🎓 Проекты ИИ и визуальное программирование",
+              "outgoingEdgeId": "edge-choice-to-rating"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "grp-rating",
+      "title": "5. Оценка обслуживания",
+      "graphCoordinates": { "x": 1740, "y": 200 },
+      "blocks": [
+        {
+          "id": "blk-ask-rating-txt",
+          "type": "text",
+          "content": {
+            "richText": [
+              {
+                "type": "p",
+                "children": [
+                  { "text": "Пожалуйста, оцените качество работы нашего виртуального ассистента:" }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "blk-choice-rating",
+          "type": "choice input",
+          "options": {
+            "isMultipleChoice": false,
+            "variableId": "var-satisfaction-rating"
+          },
+          "items": [
+            {
+              "id": "item-rate-5",
+              "content": "⭐⭐⭐⭐⭐ Отлично (5/5)",
+              "outgoingEdgeId": "edge-rating-to-condition"
+            },
+            {
+              "id": "item-rate-4",
+              "content": "⭐⭐⭐⭐ Хорошо (4/5)",
+              "outgoingEdgeId": "edge-rating-to-condition"
+            },
+            {
+              "id": "item-rate-3",
+              "content": "⭐⭐⭐ Удовлетворительно (3/5)",
+              "outgoingEdgeId": "edge-rating-to-condition"
+            },
+            {
+              "id": "item-rate-2",
+              "content": "⭐⭐ Требует доработки (2/5)",
+              "outgoingEdgeId": "edge-rating-to-condition"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "grp-condition",
+      "title": "6. Логическое ветвление (Condition)",
+      "graphCoordinates": { "x": 2120, "y": 200 },
+      "blocks": [
+        {
+          "id": "blk-condition-rating",
+          "type": "Condition",
+          "items": [
+            {
+              "id": "item-cond-high-rating",
+              "outgoingEdgeId": "edge-cond-to-high",
+              "content": {
+                "comparisons": [
+                  {
+                    "id": "comp-rating-high",
+                    "variableId": "var-satisfaction-rating",
+                    "comparisonOperator": "Contains",
+                    "value": "⭐⭐⭐⭐"
+                  }
+                ]
+              }
+            }
+          ],
+          "outgoingEdgeId": "edge-cond-to-low"
+        }
+      ]
+    },
+    {
+      "id": "grp-high-satisfaction",
+      "title": "7A. Ветка: Высокая оценка",
+      "graphCoordinates": { "x": 2500, "y": 50 },
+      "blocks": [
+        {
+          "id": "blk-high-txt",
+          "type": "text",
+          "content": {
+            "richText": [
+              {
+                "type": "p",
+                "children": [
+                  { "text": "🎉 Огромное спасибо за высокую оценку! Автор бота Тачгулиев Перхат (ИИ-241) стремится делать интерфейсы максимально отзывчивыми." }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "grp-low-satisfaction",
+      "title": "7B. Ветка: Сбор предложений",
+      "graphCoordinates": { "x": 2500, "y": 350 },
+      "blocks": [
+        {
+          "id": "blk-low-txt",
+          "type": "text",
+          "content": {
+            "richText": [
+              {
+                "type": "p",
+                "children": [
+                  { "text": "Благодарим за честную обратную связь! Что мы могли бы улучшить в диалоге или сценариях?" }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "blk-ask-feedback",
+          "type": "text input",
+          "options": {
+            "labels": {
+              "placeholder": "Напишите ваши пожелания или замеченные ошибки..."
+            },
+            "variableId": "var-feedback-notes"
+          },
+          "outgoingEdgeId": "edge-low-to-webhook"
+        }
+      ]
+    },
+    {
+      "id": "grp-webhook-integration",
+      "title": "8. HTTP Request / Webhook (Интеграция с внешним сервисом)",
+      "graphCoordinates": { "x": 2900, "y": 200 },
+      "blocks": [
+        {
+          "id": "blk-webhook-sync-txt",
+          "type": "text",
+          "content": {
+            "richText": [
+              {
+                "type": "p",
+                "children": [
+                  { "text": "⏳ Выполняю безопасную отправку данных заявки на внешний вебхук (https://httpbin.org/post)..." }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "blk-webhook-sync",
+          "type": "Webhook",
+          "options": {
+            "webhook": {
+              "method": "POST",
+              "url": "https://httpbin.org/post",
+              "headers": [
+                {
+                  "id": "hdr-content-type",
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "id": "hdr-student-agent",
+                  "key": "X-Student-Author",
+                  "value": "Tachguliev-Perhat-II-241"
+                }
+              ],
+              "body": "{\n  \"student\": \"Тачгулиев Перхат\",\n  \"academicGroup\": \"ИИ-241\",\n  \"userName\": \"{{userName}}\",\n  \"userEmail\": \"{{userEmail}}\",\n  \"studentGroup\": \"{{studentGroup}}\",\n  \"selectedService\": \"{{selectedService}}\",\n  \"satisfactionRating\": \"{{satisfactionRating}}\",\n  \"feedbackNotes\": \"{{feedbackNotes}}\",\n  \"timestamp\": \"2026-10-28T09:00:00Z\"\n}",
+              "responseVariableMapping": [
+                {
+                  "id": "map-origin-ip",
+                  "bodyPath": "origin",
+                  "variableId": "var-server-origin"
+                }
+              ]
+            }
+          },
+          "outgoingEdgeId": "edge-webhook-to-conclusion"
+        }
+      ]
+    },
+    {
+      "id": "grp-conclusion",
+      "title": "9. Завершение диалога и подтверждение",
+      "graphCoordinates": { "x": 3320, "y": 200 },
+      "blocks": [
+        {
+          "id": "blk-farewell-success",
+          "type": "text",
+          "content": {
+            "richText": [
+              {
+                "type": "p",
+                "children": [
+                  { "text": "✅ Данные успешно доставлены и зарегистрированы сервером!" }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "blk-farewell",
+          "type": "text",
+          "content": {
+            "richText": [
+              {
+                "type": "p",
+                "children": [
+                  { "text": "Спасибо, " },
+                  { "text": "{{userName}}", "bold": true },
+                  { "text": " (группа/организация: " },
+                  { "text": "{{studentGroup}}", "bold": true },
+                  { "text": ")! Заявка по направлению «" },
+                  { "text": "{{selectedService}}", "bold": true },
+                  { "text": "» успешно обработана. Координатор Тачгулиев П. (ИИ-241) свяжется с вами по адресу " },
+                  { "text": "{{userEmail}}", "bold": true },
+                  { "text": "." }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "id": "edge-start-to-welcome",
+      "from": { "eventId": "evt-start-tachguliev" },
+      "to": { "groupId": "grp-welcome", "blockId": "blk-welcome-txt-1" }
+    },
+    {
+      "id": "edge-welcome-to-email",
+      "from": { "blockId": "blk-ask-name" },
+      "to": { "groupId": "grp-email", "blockId": "blk-greet-user" }
+    },
+    {
+      "id": "edge-email-to-group",
+      "from": { "blockId": "blk-ask-email" },
+      "to": { "groupId": "grp-group-input", "blockId": "blk-ask-group-txt" }
+    },
+    {
+      "id": "edge-group-to-service",
+      "from": { "blockId": "blk-ask-group" },
+      "to": { "groupId": "grp-service-choice", "blockId": "blk-ask-topic" }
+    },
+    {
+      "id": "edge-choice-to-rating",
+      "from": { "blockId": "blk-choice-topic" },
+      "to": { "groupId": "grp-rating", "blockId": "blk-ask-rating-txt" }
+    },
+    {
+      "id": "edge-rating-to-condition",
+      "from": { "blockId": "blk-choice-rating" },
+      "to": { "groupId": "grp-condition", "blockId": "blk-condition-rating" }
+    },
+    {
+      "id": "edge-cond-to-high",
+      "from": { "blockId": "blk-condition-rating", "itemId": "item-cond-high-rating" },
+      "to": { "groupId": "grp-high-satisfaction", "blockId": "blk-high-txt" }
+    },
+    {
+      "id": "edge-cond-to-low",
+      "from": { "blockId": "blk-condition-rating" },
+      "to": { "groupId": "grp-low-satisfaction", "blockId": "blk-low-txt" }
+    },
+    {
+      "id": "edge-high-to-webhook",
+      "from": { "blockId": "blk-high-txt" },
+      "to": { "groupId": "grp-webhook-integration", "blockId": "blk-webhook-sync-txt" }
+    },
+    {
+      "id": "edge-low-to-webhook",
+      "from": { "blockId": "blk-ask-feedback" },
+      "to": { "groupId": "grp-webhook-integration", "blockId": "blk-webhook-sync-txt" }
+    },
+    {
+      "id": "edge-webhook-to-conclusion",
+      "from": { "blockId": "blk-webhook-sync" },
+      "to": { "groupId": "grp-conclusion", "blockId": "blk-farewell-success" }
+    }
+  ],
+  "variables": [
+    {
+      "id": "var-user-name",
+      "name": "userName",
+      "isSessionVariable": true
+    },
+    {
+      "id": "var-user-email",
+      "name": "userEmail",
+      "isSessionVariable": true
+    },
+    {
+      "id": "var-student-group",
+      "name": "studentGroup",
+      "isSessionVariable": true
+    },
+    {
+      "id": "var-selected-service",
+      "name": "selectedService",
+      "isSessionVariable": true
+    },
+    {
+      "id": "var-satisfaction-rating",
+      "name": "satisfactionRating",
+      "isSessionVariable": true
+    },
+    {
+      "id": "var-feedback-notes",
+      "name": "feedbackNotes",
+      "isSessionVariable": true
+    },
+    {
+      "id": "var-server-origin",
+      "name": "serverOrigin",
+      "isSessionVariable": true
+    }
+  ],
+  "theme": {
+    "general": {
+      "font": "Inter",
+      "background": {
+        "type": "Color",
+        "content": "#0B0F19"
+      }
+    },
+    "chat": {
+      "hostAvatar": {
+        "isEnabled": true
+      },
+      "guestAvatar": {
+        "isEnabled": false
+      },
+      "hostBubbles": {
+        "backgroundColor": "#1E293B",
+        "color": "#F8FAFC"
+      },
+      "guestBubbles": {
+        "backgroundColor": "#2563EB",
+        "color": "#FFFFFF"
+      },
+      "buttons": {
+        "backgroundColor": "#3B82F6",
+        "color": "#FFFFFF"
+      },
+      "inputs": {
+        "backgroundColor": "#1E293B",
+        "color": "#F1F5F9",
+        "placeholderColor": "#94A3B8"
+      }
+    }
+  },
+  "settings": {
+    "general": {
+      "isBrandingEnabled": false
+    },
+    "typingEmulation": {
+      "enabled": true,
+      "speed": 350,
+      "maxDelay": 1.2
+    }
+  }
+}
