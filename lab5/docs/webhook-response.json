@@ -1,0 +1,43 @@
+{
+  "status": 200,
+  "statusText": "OK",
+  "endpoint": "https://httpbin.org/post",
+  "method": "POST",
+  "headers": {
+    "Content-Type": "application/json",
+    "X-Student-Author": "Tachguliev-Perhat-II-241",
+    "User-Agent": "Typebot-Engine/6.0"
+  },
+  "payload": {
+    "student": "Тачгулиев Перхат",
+    "academicGroup": "ИИ-241",
+    "userName": "Александр",
+    "userEmail": "alexander@test.edu",
+    "studentGroup": "ИИ-241",
+    "selectedService": "🛠 Техническая поддержка и баг-репорты",
+    "satisfactionRating": "⭐⭐⭐⭐⭐ Отлично (5/5)",
+    "feedbackNotes": "Интерфейс работает быстро и без задержек.",
+    "timestamp": "2026-10-28T09:44:40Z"
+  },
+  "response": {
+    "origin": "172.232.221.37",
+    "url": "https://httpbin.org/post",
+    "headers": {
+      "Accept": "*/*",
+      "Content-Type": "application/json; charset=utf-8",
+      "Host": "httpbin.org",
+      "X-Student-Author": "Tachguliev-Perhat-II-241"
+    },
+    "json": {
+      "student": "Тачгулиев Перхат",
+      "academicGroup": "ИИ-241",
+      "userName": "Александр",
+      "userEmail": "alexander@test.edu",
+      "studentGroup": "ИИ-241",
+      "selectedService": "🛠 Техническая поддержка и баг-репорты",
+      "satisfactionRating": "⭐⭐⭐⭐⭐ Отлично (5/5)",
+      "feedbackNotes": "Интерфейс работает быстро и без задержек.",
+      "timestamp": "2026-10-28T09:44:40Z"
+    }
+  }
+}
