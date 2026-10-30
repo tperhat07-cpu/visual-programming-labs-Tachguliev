@@ -1,0 +1,245 @@
+{
+  "version": "6",
+  "id": "cl_base_lead_support",
+  "name": "Lead Generation & Support Bot (Base Template)",
+  "events": [
+    {
+      "id": "evt-start-01",
+      "type": "start",
+      "graphCoordinates": { "x": 0, "y": 100 },
+      "outgoingEdgeId": "edge-start-to-welcome"
+    }
+  ],
+  "groups": [
+    {
+      "id": "grp-welcome",
+      "title": "Welcome & Identification",
+      "graphCoordinates": { "x": 200, "y": 100 },
+      "blocks": [
+        {
+          "id": "blk-welcome-txt-1",
+          "type": "text",
+          "content": {
+            "richText": [
+              {
+                "type": "p",
+                "children": [
+                  { "text": "Hello! Welcome to our automated customer service." }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "blk-welcome-txt-2",
+          "type": "text",
+          "content": {
+            "richText": [
+              {
+                "type": "p",
+                "children": [
+                  { "text": "I can help you explore our services or connect with our support team." }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "blk-ask-name",
+          "type": "text input",
+          "options": {
+            "labels": {
+              "placeholder": "Type your name here..."
+            },
+            "variableId": "var-user-name"
+          },
+          "outgoingEdgeId": "edge-welcome-to-email"
+        }
+      ]
+    },
+    {
+      "id": "grp-email",
+      "title": "Contact Details",
+      "graphCoordinates": { "x": 580, "y": 100 },
+      "blocks": [
+        {
+          "id": "blk-greet-user",
+          "type": "text",
+          "content": {
+            "richText": [
+              {
+                "type": "p",
+                "children": [
+                  { "text": "Nice to meet you, " },
+                  { "text": "{{userName}}", "bold": true },
+                  { "text": "! Please enter your contact email." }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "blk-ask-email",
+          "type": "email input",
+          "options": {
+            "labels": {
+              "placeholder": "example@domain.com"
+            },
+            "variableId": "var-user-email"
+          },
+          "outgoingEdgeId": "edge-email-to-service"
+        }
+      ]
+    },
+    {
+      "id": "grp-service-choice",
+      "title": "Topic Selection",
+      "graphCoordinates": { "x": 960, "y": 100 },
+      "blocks": [
+        {
+          "id": "blk-ask-topic",
+          "type": "text",
+          "content": {
+            "richText": [
+              {
+                "type": "p",
+                "children": [
+                  { "text": "What topic would you like to inquire about?" }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "blk-choice-topic",
+          "type": "choice input",
+          "options": {
+            "isMultipleChoice": false,
+            "variableId": "var-selected-service"
+          },
+          "items": [
+            {
+              "id": "item-choice-tech",
+              "content": "Technical Support",
+              "outgoingEdgeId": "edge-choice-tech"
+            },
+            {
+              "id": "item-choice-consult",
+              "content": "General Consultation",
+              "outgoingEdgeId": "edge-choice-consult"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "grp-conclusion",
+      "title": "Conclusion",
+      "graphCoordinates": { "x": 1340, "y": 100 },
+      "blocks": [
+        {
+          "id": "blk-farewell",
+          "type": "text",
+          "content": {
+            "richText": [
+              {
+                "type": "p",
+                "children": [
+                  { "text": "Thank you! Our manager has registered your request and will contact you shortly." }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "id": "edge-start-to-welcome",
+      "from": { "eventId": "evt-start-01" },
+      "to": { "groupId": "grp-welcome", "blockId": "blk-welcome-txt-1" }
+    },
+    {
+      "id": "edge-welcome-to-email",
+      "from": { "blockId": "blk-ask-name" },
+      "to": { "groupId": "grp-email", "blockId": "blk-greet-user" }
+    },
+    {
+      "id": "edge-email-to-service",
+      "from": { "blockId": "blk-ask-email" },
+      "to": { "groupId": "grp-service-choice", "blockId": "blk-ask-topic" }
+    },
+    {
+      "id": "edge-choice-tech",
+      "from": { "blockId": "blk-choice-topic", "itemId": "item-choice-tech" },
+      "to": { "groupId": "grp-conclusion", "blockId": "blk-farewell" }
+    },
+    {
+      "id": "edge-choice-consult",
+      "from": { "blockId": "blk-choice-topic", "itemId": "item-choice-consult" },
+      "to": { "groupId": "grp-conclusion", "blockId": "blk-farewell" }
+    }
+  ],
+  "variables": [
+    {
+      "id": "var-user-name",
+      "name": "userName",
+      "isSessionVariable": true
+    },
+    {
+      "id": "var-user-email",
+      "name": "userEmail",
+      "isSessionVariable": true
+    },
+    {
+      "id": "var-selected-service",
+      "name": "selectedService",
+      "isSessionVariable": true
+    }
+  ],
+  "theme": {
+    "general": {
+      "font": "Open Sans",
+      "background": {
+        "type": "Color",
+        "content": "#ffffff"
+      }
+    },
+    "chat": {
+      "hostAvatar": {
+        "isEnabled": true
+      },
+      "guestAvatar": {
+        "isEnabled": false
+      },
+      "hostBubbles": {
+        "backgroundColor": "#F7F8FF",
+        "color": "#303235"
+      },
+      "guestBubbles": {
+        "backgroundColor": "#0042DA",
+        "color": "#FFFFFF"
+      },
+      "buttons": {
+        "backgroundColor": "#0042DA",
+        "color": "#FFFFFF"
+      },
+      "inputs": {
+        "backgroundColor": "#FFFFFF",
+        "color": "#303235",
+        "placeholderColor": "#9095A0"
+      }
+    }
+  },
+  "settings": {
+    "general": {
+      "isBrandingEnabled": false
+    },
+    "typingEmulation": {
+      "enabled": true,
+      "speed": 300,
+      "maxDelay": 1.5
+    }
+  }
+}
