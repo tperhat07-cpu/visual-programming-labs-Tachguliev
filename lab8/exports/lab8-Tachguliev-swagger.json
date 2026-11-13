@@ -1,0 +1,21 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "lab8-tachguliev-api",
+    "version": "0.0.1",
+    "description": "Xano REST API Backend by Tachguliev Perhat (II-241)"
+  },
+  "servers": [
+    { "url": "https://x8ki-letl-twmt.n7.xano.io/api:Wh6CV0in" }
+  ],
+  "paths": {
+    "/1_courses_tachguliev": {
+      "get": { "summary": "Query all 1_courses_tachguliev records (with search query param)" },
+      "post": { "summary": "Add 1_courses_tachguliev record" }
+    },
+    "/1_courses_tachguliev/{1_courses_tachguliev_id}": {
+      "put": { "summary": "Update 1_courses_tachguliev record by path id" },
+      "delete": { "summary": "Delete 1_courses_tachguliev record by path id" }
+    }
+  }
+}
